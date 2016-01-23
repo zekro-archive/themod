@@ -1,0 +1,16 @@
+[
+{
+  "modid": "themod",
+  "name": "THE Mod",
+  "description": "This is a simple mod based on a insider of zekro's & luxtracon's TekkitLite Let's Play.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://zekro.jimdo.com",
+  "updateUrl": "",
+  "authorList": ["zekro"],
+  "credits": "Thanks to luxtracon for the great idea and the nice sound file! ;D",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
