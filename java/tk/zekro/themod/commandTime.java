@@ -19,12 +19,12 @@ public class commandTime extends CommandBase {
 
 	@Override
 	public String getCommandName() {
-		return "day";
+		return themod.customCommand;
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender sender) {
-		return "/day";
+		return "/" + themod.customCommand;
 	}
 
 	@Override
