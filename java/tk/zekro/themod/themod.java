@@ -20,7 +20,7 @@ import net.minecraftforge.common.MinecraftForge;
 import tk.zekro.themod.proxies.themodProxy;
 
 
-@Mod(modid="themod", name="THE Mod", version="1.1.0-0012")
+@Mod(modid="themod", name="THE Mod", version="1.2.0-0016")
 public class themod {
 
 	@SidedProxy(clientSide="tk.zekro.themod.proxies.themodClientProxy", serverSide="tk.zekro.themod.proxies.themodProxy")
@@ -30,18 +30,24 @@ public class themod {
 	public static themod instance;
 	
 	public static String customCommand;
+	public static boolean playSound;
+	public static float volumeSound;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		
+		//--> CONFIG
 		net.minecraftforge.common.config.Configuration config = new net.minecraftforge.common.config.Configuration(event.getSuggestedConfigurationFile());
 		System.out.println("[THEMod] Configuration loadet.");
 		System.out.println("[THEMod] Config found at:" + event.getSuggestedConfigurationFile());
 		config.load();
 		
 		customCommand = config.getString("COMMAND", "customCommand", "day", "Command without '/'.");
+		playSound = config.getBoolean("PLAYSOUND", "sound", true, "Enable/Disable sound by command input. ('true'/'false')");
+		volumeSound = config.getFloat("SOUNDVOLUME", "sound", 1, 0, 3, "Sound volume (Float 0 - 3)");
 		
 		config.save();
+		//<-- CONFIG
 	}
 	
 	@EventHandler
