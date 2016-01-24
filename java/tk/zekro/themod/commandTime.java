@@ -2,12 +2,10 @@ package tk.zekro.themod;
 
 import net.minecraft.client.Minecraft;
 import java.util.Random;
-
 import net.minecraft.client.multiplayer.WorldClient;
-
 import java.util.Random;
-
 import akka.actor.FSM.Event;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModClassLoader;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandManager;
@@ -35,18 +33,25 @@ public class commandTime extends CommandBase {
 	@Override
 	public void processCommand(ICommandSender sender, String[] args) {
 		
-		if (sender instanceof EntityPlayer) {
+		if (sender instanceof EntityPlayer && eventListener.playerIsInBed) {
 			
 			EntityPlayer player = (EntityPlayer) sender;
 			System.out.println(EnumChatFormatting.RED + "THEMOD HAS BIN EXECUTED!");
+			if (themod.showMessage) {
+				sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "[THEMod] " + EnumChatFormatting.WHITE + "DER MOD wurde ausgeführt!"));
+			}
 			if (themod.playSound) {
 				Random randGen = new Random();
-				int rand = randGen.nextInt(3);
+				int rand = randGen.nextInt(4);
 				soundPlayer.playSoundMenue("dominik" + rand, 1, themod.volumeSound);
 			}
 			setTime(player.getEntityWorld());
 		} else {
-			sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Dieser Command ist nicht ind er Consolse ausführbar!"));
+			if (!eventListener.playerIsInBed) {
+				sender.addChatMessage(new ChatComponentText(EnumChatFormatting.BLUE + "[THEMod] " + EnumChatFormatting.WHITE + "Du musst im Bett liegen um diesen Command ausführen zu können!"));
+			} else {
+				sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "[THEMod] Dieser Command ist nicht ind er Consolse ausführbar!"));
+			}
 		}
 	}
 	

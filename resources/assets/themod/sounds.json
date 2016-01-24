@@ -1,5 +1,6 @@
 {
     "dominik0": {"category": "player", "sounds": ["dominik0"]};
     "dominik1": {"category": "player", "sounds": ["dominik1"]};
-    "dominik2": {"category": "player", "sounds": ["dominik2"]}
+    "dominik2": {"category": "player", "sounds": ["dominik2"]};
+    "dominik3": {"category": "player", "sounds": ["dominik3"]}
 }

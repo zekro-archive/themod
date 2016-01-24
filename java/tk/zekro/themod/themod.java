@@ -1,9 +1,7 @@
 package tk.zekro.themod;
 
 import javax.security.auth.login.Configuration;
-
 import com.typesafe.config.Config;
-
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -20,7 +18,7 @@ import net.minecraftforge.common.MinecraftForge;
 import tk.zekro.themod.proxies.themodProxy;
 
 
-@Mod(modid="themod", name="THE Mod", version="1.2.0-0016")
+@Mod(modid="themod", name="THE Mod", version="1.3.0-0027")
 public class themod {
 
 	@SidedProxy(clientSide="tk.zekro.themod.proxies.themodClientProxy", serverSide="tk.zekro.themod.proxies.themodProxy")
@@ -32,6 +30,7 @@ public class themod {
 	public static String customCommand;
 	public static boolean playSound;
 	public static float volumeSound;
+	public static boolean showMessage;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -42,9 +41,10 @@ public class themod {
 		System.out.println("[THEMod] Config found at:" + event.getSuggestedConfigurationFile());
 		config.load();
 		
-		customCommand = config.getString("COMMAND", "customCommand", "day", "Command without '/'.");
+		customCommand = config.getString("COMMAND", "special", "day", "Command without '/'.");
 		playSound = config.getBoolean("PLAYSOUND", "sound", true, "Enable/Disable sound by command input. ('true'/'false')");
 		volumeSound = config.getFloat("SOUNDVOLUME", "sound", 1, 0, 3, "Sound volume (Float 0 - 3)");
+		showMessage = config.getBoolean("SHOWMESSAGE", "special", true, "Enable/Disable message by command input. ('true'/'false')");
 		
 		config.save();
 		//<-- CONFIG
@@ -53,6 +53,8 @@ public class themod {
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
 		proxy.registerRenderers();
+		//Get the event if the player is in bed or not from the 'eventListener.class'
+		MinecraftForge.EVENT_BUS.register(new eventListener());
 	}
 	
 	public void postInit(FMLPostInitializationEvent event) {}
@@ -60,6 +62,7 @@ public class themod {
 	
 	@EventHandler
 	public void registerCommands(FMLServerStartingEvent event) {
+		//registering of the new command /day (or what is defined in the config.cfg ^^)
 		ServerCommandManager manager = (ServerCommandManager) event.getServer().getCommandManager();
 		manager.registerCommand(new commandTime());
 	}
