@@ -38,7 +38,9 @@ public class commandTime extends CommandBase {
 			EntityPlayer player = (EntityPlayer) sender;
 			System.out.println(EnumChatFormatting.RED + "THEMOD HAS BIN EXECUTED!");
 			if (themod.showMessage) {
-				sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "[THEMod] " + EnumChatFormatting.WHITE + "DER MOD wurde ausgeführt!"));
+				
+				//Chat Message after successful command input
+				sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "[THEMod] " + EnumChatFormatting.WHITE + themod.successfulChatMessage));
 			}
 			if (themod.playSound) {
 				Random randGen = new Random();
@@ -48,9 +50,10 @@ public class commandTime extends CommandBase {
 			setTime(player.getEntityWorld());
 		} else {
 			if (!eventListener.playerIsInBed) {
-				sender.addChatMessage(new ChatComponentText(EnumChatFormatting.BLUE + "[THEMod] " + EnumChatFormatting.WHITE + "Du musst im Bett liegen um diesen Command ausführen zu können!"));
+				//Chat Message after type in the command with not allowed world events (time is day, player not in bed)
+				sender.addChatMessage(new ChatComponentText(EnumChatFormatting.BLUE + "[THEMod] " + EnumChatFormatting.WHITE + themod.notSuccessfulChatMessage));
 			} else {
-				sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "[THEMod] Dieser Command ist nicht ind er Consolse ausführbar!"));
+				sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "[THEMod] This command is not a consol command!"));
 			}
 		}
 	}

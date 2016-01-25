@@ -1,6 +1,7 @@
 package tk.zekro.themod;
 
 import javax.security.auth.login.Configuration;
+
 import com.typesafe.config.Config;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -18,7 +19,7 @@ import net.minecraftforge.common.MinecraftForge;
 import tk.zekro.themod.proxies.themodProxy;
 
 
-@Mod(modid="themod", name="THE Mod", version="1.3.0-0027")
+@Mod(modid="themod", name="THE Mod", version="1.3.1-0031")
 public class themod {
 
 	@SidedProxy(clientSide="tk.zekro.themod.proxies.themodClientProxy", serverSide="tk.zekro.themod.proxies.themodProxy")
@@ -27,6 +28,8 @@ public class themod {
 	@Instance(value="themod")
 	public static themod instance;
 	
+	public static String successfulChatMessage;
+	public static String notSuccessfulChatMessage;
 	public static String customCommand;
 	public static boolean playSound;
 	public static float volumeSound;
@@ -34,6 +37,8 @@ public class themod {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		
+		
 		
 		//--> CONFIG
 		net.minecraftforge.common.config.Configuration config = new net.minecraftforge.common.config.Configuration(event.getSuggestedConfigurationFile());
@@ -45,6 +50,8 @@ public class themod {
 		playSound = config.getBoolean("PLAYSOUND", "sound", true, "Enable/Disable sound by command input. ('true'/'false')");
 		volumeSound = config.getFloat("SOUNDVOLUME", "sound", 1, 0, 3, "Sound volume (Float 0 - 3)");
 		showMessage = config.getBoolean("SHOWMESSAGE", "special", true, "Enable/Disable message by command input. ('true'/'false')");
+		successfulChatMessage = config.getString("MESSAGE WHEN SUCCESSFUL", "ingame_messages", "THEM Mod has beed executed!", "Type in the text wich is sown if the command was executed successful");
+		notSuccessfulChatMessage = config.getString("MESSAGE WHEN NOT SUCCESSFUL", "ingame_messages", "You have to be in a bed to use this command!", "Type in the text wich is sown if the command was executed with not allowed events (time is day, player not in bed)");
 		
 		config.save();
 		//<-- CONFIG
