@@ -12,6 +12,7 @@ import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
@@ -45,7 +46,10 @@ public class commandTime extends CommandBase {
 			if (themod.playSound) {
 				Random randGen = new Random();
 				int rand = randGen.nextInt(4);
-				soundPlayer.playSoundMenue("dominik" + rand, 1, themod.volumeSound);
+				
+				player.getEntityWorld().playSoundAtEntity(player, "themod:dominik" + rand , 1.0F, themod.volumeSound);
+				
+//				soundPlayer.playSoundMenue("dominik" + rand, 1, themod.volumeSound);
 			}
 			setTime(player.getEntityWorld());
 		} else {

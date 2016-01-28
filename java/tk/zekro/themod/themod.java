@@ -19,7 +19,7 @@ import net.minecraftforge.common.MinecraftForge;
 import tk.zekro.themod.proxies.themodProxy;
 
 
-@Mod(modid="themod", name="THE Mod", version="1.3.1-0031")
+@Mod(modid="themod", name="THE Mod", version="1.3.2-0041")
 public class themod {
 
 	@SidedProxy(clientSide="tk.zekro.themod.proxies.themodClientProxy", serverSide="tk.zekro.themod.proxies.themodProxy")
@@ -48,7 +48,7 @@ public class themod {
 		
 		customCommand = config.getString("COMMAND", "special", "day", "Command without '/'.");
 		playSound = config.getBoolean("PLAYSOUND", "sound", true, "Enable/Disable sound by command input. ('true'/'false')");
-		volumeSound = config.getFloat("SOUNDVOLUME", "sound", 1, 0, 3, "Sound volume (Float 0 - 3)");
+		volumeSound = config.getFloat("SOUNDVOLUME", "sound", 1.0F, 0.0F, 3.0F, "Sound volume (Float 0 - 3)");
 		showMessage = config.getBoolean("SHOWMESSAGE", "special", true, "Enable/Disable message by command input. ('true'/'false')");
 		successfulChatMessage = config.getString("MESSAGE WHEN SUCCESSFUL", "ingame_messages", "THEM Mod has beed executed!", "Type in the text wich is sown if the command was executed successful");
 		notSuccessfulChatMessage = config.getString("MESSAGE WHEN NOT SUCCESSFUL", "ingame_messages", "You have to be in a bed to use this command!", "Type in the text wich is sown if the command was executed with not allowed events (time is day, player not in bed)");
