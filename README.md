@@ -7,4 +7,4 @@ With the Command "*/day*" you can set the world time to day and you can hear the
 ___
 This mod is an **unofficial released modification** actually created only for my modpack **EV.Technics** (*http://zekro.jimdo.com/evt-eng*)!
 
-You can download the compiled mod here: https://copy.com/CLE0lkQp6Fiul0T9
+You can download the compiled mod here: https://github.com/zekroTJA/THE-Mod./releases/tag/1.3.2-0041
