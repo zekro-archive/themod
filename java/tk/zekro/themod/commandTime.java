@@ -31,6 +31,7 @@ public class commandTime extends CommandBase {
 		return "/" + themod.customCommand;
 	}
 
+	//generates a new command "/day" (or like it is configured in the config file)
 	@Override
 	public void processCommand(ICommandSender sender, String[] args) {
 		
@@ -49,8 +50,10 @@ public class commandTime extends CommandBase {
 				
 				player.getEntityWorld().playSoundAtEntity(player, "themod:dominik" + rand , 1.0F, themod.volumeSound);
 				
-//				soundPlayer.playSoundMenue("dominik" + rand, 1, themod.volumeSound);
+//OLD SOUND PLAYER	 soundPlayer.playSoundMenue("dominik" + rand, 1, themod.volumeSound);
 			}
+			
+			//set the world time to day after entering the command
 			setTime(player.getEntityWorld());
 		} else {
 			if (!eventListener.playerIsInBed) {
