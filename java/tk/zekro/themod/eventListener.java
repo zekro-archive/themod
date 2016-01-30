@@ -46,7 +46,7 @@ public class eventListener {
 	//similar but here its checked if its day after sleeping and the player was awaked
 	@SubscribeEvent
 	public void onPlayerNotSleep(PlayerWakeUpEvent event) {
-		if (event.entityPlayer.worldObj.provider.isDaytime() && !event.entityPlayer.worldObj.isRemote) {
+		if (/*event.entityPlayer.worldObj.provider.isDaytime() &&*/ !event.entityPlayer.worldObj.isRemote) {
 			playerIsInBed = false;
 		}
 	}	

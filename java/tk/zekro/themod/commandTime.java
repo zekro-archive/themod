@@ -38,7 +38,7 @@ public class commandTime extends CommandBase {
 		if (sender instanceof EntityPlayer && eventListener.playerIsInBed) {
 			
 			EntityPlayer player = (EntityPlayer) sender;
-			System.out.println(EnumChatFormatting.RED + "THEMOD HAS BIN EXECUTED!");
+			System.out.println(EnumChatFormatting.RED + "THEMOD HAS BEENN EXECUTED!");
 			if (themod.showMessage) {
 				
 				//Chat Message after successful command input
@@ -55,6 +55,7 @@ public class commandTime extends CommandBase {
 			
 			//set the world time to day after entering the command
 			setTime(player.getEntityWorld());
+			
 		} else {
 			if (!eventListener.playerIsInBed) {
 				//Chat Message after type in the command with not allowed world events (time is day, player not in bed)
