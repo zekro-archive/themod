@@ -30,7 +30,7 @@ public class eventListener {
 			event.player.addChatComponentMessage(new ChatComponentText(
 					EnumChatFormatting.GRAY + " You can donwload it here: "));
 			event.player.addChatMessage(new ChatComponentText(
-					EnumChatFormatting.ITALIC.GRAY + "https://github.com/zekroTJA/THE-Mod./releases"));
+					EnumChatFormatting.ITALIC.GRAY + "https://github.com/zekroTJA/themod/releases"));
 		}
 	}
 	

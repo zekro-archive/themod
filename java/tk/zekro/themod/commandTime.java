@@ -48,13 +48,14 @@ public class commandTime extends CommandBase {
 				Random randGen = new Random();
 				int rand = randGen.nextInt(4);
 				
-				player.getEntityWorld().playSoundAtEntity(player, "themod:dominik" + rand , 1.0F, themod.volumeSound);
+				player.getEntityWorld().playSoundAtEntity(player, "themod:dominik" + rand , themod.volumeSound, 1f);
+				if (themod.difficulty != 0)
+					Minecraft.getMinecraft().thePlayer.sendChatMessage("/difficulty " + themod.difficulty);
 				
-//OLD SOUND PLAYER	 soundPlayer.playSoundMenue("dominik" + rand, 1, themod.volumeSound);
 			}
 			
 			//set the world time to day after entering the command
-			setTime(player.getEntityWorld());
+			player.getEntityWorld().setWorldTime(0);
 			
 		} else {
 			if (!eventListener.playerIsInBed) {
@@ -64,9 +65,5 @@ public class commandTime extends CommandBase {
 				sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "[THEMod] This command is not a consol command!"));
 			}
 		}
-	}
-	
-	public void setTime(World world){
-		world.setWorldTime(0);
 	}
 }
